@@ -60,10 +60,10 @@ let pokemonList = [
 for(let i = 0; i < pokemonList.length; i++){
     // Add a conditional checking if the height of the pokemon is bigger or equal to 1.0    
     if(pokemonList[i].height >= 1.0){
-        document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height}) - Wow, that's big!`)
+        document.write(`${'<p>'} ${pokemonList[i].name} (height: ${pokemonList[i].height}) - Wow, that's big! ${'</p>'}`)
     }
     // Part of the code that escapes if to the height value doesn't meet the conditional
     else{
-        document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height})`)
+        document.write(`${'<p>'} ${pokemonList[i].name} (height: ${pokemonList[i].height}) ${"</p>"}`)
     }
 }
