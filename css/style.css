@@ -11,3 +11,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+body > p {
+    margin: 10px 0;
+    text-transform: capitalize;
+}
