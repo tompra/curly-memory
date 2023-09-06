@@ -104,7 +104,7 @@ let pokemonList = [
            return pokemon.name.startsWith(searchByName)
         })
         //Log in the searched pokemon into the console
-        console.log(searchedPokemon);
+        console.table(searchedPokemon);
     }
 
     // IIFE return values to be global values
@@ -128,7 +128,7 @@ pokemonRepository.getAll().forEach((pokemon) =>{
     }
 })
 
-pokemonRepository.findPokemonByName('charizard')
+pokemonRepository.findPokemonByName('char')
 
 
 
