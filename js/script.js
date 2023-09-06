@@ -116,6 +116,18 @@ let pokemonList = [
     }
 })() 
 
+// Examples
+
+// Searching a pokemon by name or pokemons that start with
+pokemonRepository.findPokemonByName('char')
+
+// Adding a new pokemon to the list
+pokemonRepository.add({name:'caterpie', height: 0.3, type:['bug']})
+// pokemonRepository.add({nae:'caterpie', height: 0.3, tye:['bug']}) // Creates an error by wrong key
+pokemonRepository.addv({name:'metapod', height: 0.7, type:['bug']})
+// pokemonRepository.addv({name:'metapod', height: '0.7', type: 'fire'}) // Creates an error by wrong key and value
+
+
 // Calling the function by the IFFE to retrieve the pokemon list
 // Re-factoring the for loop to the built-in function forEach()
 pokemonRepository.getAll().forEach((pokemon) =>{
@@ -127,8 +139,5 @@ pokemonRepository.getAll().forEach((pokemon) =>{
         document.write(`${'<p>'} ${pokemon.name} (height: ${pokemon.height}) ${"</p>"}`)
     }
 })
-
-pokemonRepository.findPokemonByName('char')
-
 
 
