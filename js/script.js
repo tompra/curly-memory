@@ -95,14 +95,22 @@ let pokemonList = [
         }
 
     }
+    // Add searchByName parameter
+    function findPokemonByName(searchByName){
+        // Filter the pokemon list to find the search pokemon
+        pokemonList.filter((pokemon) => {
+            console.log(pokemon.name === searchByName);
+        })
+    }
 
-    
+
 
     // IIFE return values to be global values
     return{
         getAll: getAll,
         add: add,
-        addv: addv
+        addv: addv,
+        findPokemonByName: findPokemonByName
     }
 })() 
 
@@ -117,6 +125,8 @@ pokemonRepository.getAll().forEach((pokemon) =>{
         document.write(`${'<p>'} ${pokemon.name} (height: ${pokemon.height}) ${"</p>"}`)
     }
 })
+
+pokemonRepository.findPokemonByName('bulbasaur')
 
 
 
