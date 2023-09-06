@@ -67,25 +67,36 @@ let pokemonList = [
     // Add a new pokemon
     function add(pokemon){
         // conditional if object then add if not error message
-        if(typeof pokemon === 'object'){
+        if(typeof pokemon === 'object' && pokemon.hasOwnProperty('name') && pokemon.hasOwnProperty('height') && pokemon.hasOwnProperty('type')){
             return pokemonList.push(pokemon)
         }else{
             return console.error('Something went wrong! Add a pokemon object')
         }
     }
-    function addv(item){
-       
+    function addv(pokemon){
+        // Valid keys to add a pokemon
+        let validKeys = ['name','height','type']
+        // The keys added by the function
+        let inputKeys = Object.keys(pokemon)   
+        // Checking if the pokemon added was an object and has the same key and value data type
+        if(typeof pokemon === 'object' && validKeys.length === inputKeys.length){
+            
+            
+        }
+
     }
     // IIFE return values to be global values
     return{
         getAll: getAll,
-        add: add
+        add: add,
+        addv: addv
     }
 })() 
-// {name:'blas',height: 1.2,type:['water']}
 
 console.log('getAll', pokemonRepository.getAll())
-console.log('add',pokemonRepository.add())
+console.log('add',pokemonRepository.addv({nae:'blas',height: 1.2,type:['water']}))
+// console.log('add',pokemonRepository.add({name:'blas',height: 1.2,type:['water']}))
+
 // Calling the function by the IFFE to retrieve the pokemon list
 // Re-factoring the for loop to the built-in function forEach()
 pokemonRepository.getAll().forEach((pokemon) =>{
