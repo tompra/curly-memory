@@ -123,9 +123,9 @@ pokemonRepository.findPokemonByName('char')
 
 // Adding a new pokemon to the list
 pokemonRepository.add({name:'caterpie', height: 0.3, type:['bug']})
-// pokemonRepository.add({nae:'caterpie', height: 0.3, tye:['bug']}) // Creates an error by wrong key
+pokemonRepository.add({nae:'caterpie', height: 0.3, tye:['bug']}) // Creates an error by wrong key
 pokemonRepository.addv({name:'metapod', height: 0.7, type:['bug']})
-// pokemonRepository.addv({name:'metapod', height: '0.7', type: 'fire'}) // Creates an error by wrong key and value
+pokemonRepository.addv({name:'metapod', height: '0.7', type: 'fire'}) // Creates an error by wrong key and value
 
 
 // Calling the function by the IFFE to retrieve the pokemon list
