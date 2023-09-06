@@ -1,4 +1,6 @@
-// Object with the pokemons and characteristics
+// Declaring IIFE inside a variable
+let pokemonRepository = (function(){
+    // Object with the pokemons and characteristics
 let pokemonList = [
     {
         name: 'bulbasaur',
@@ -56,6 +58,14 @@ let pokemonList = [
         type: ['water']
     }
 ];
+
+    return{
+        
+    }
+})() 
+
+
+
 // Looping throught the pokemonList object
 // for(let i = 0; i < pokemonList.length; i++){
 //     // Add a conditional checking if the height of the pokemon is bigger or equal to 1.0    
