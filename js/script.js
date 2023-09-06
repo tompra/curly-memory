@@ -98,12 +98,14 @@ let pokemonList = [
     // Add searchByName parameter
     function findPokemonByName(searchByName){
         // Filter the pokemon list to find the search pokemon
-        pokemonList.filter((pokemon) => {
-            console.log(pokemon.name === searchByName);
+        // Put the filter method into a variable to return the value searched
+       let searchedPokemon = pokemonList.filter((pokemon) => {
+        // Find the full name or the pokemons that start with using the startWith string method
+           return pokemon.name.startsWith(searchByName)
         })
+        //Log in the searched pokemon into the console
+        console.log(searchedPokemon);
     }
-
-
 
     // IIFE return values to be global values
     return{
@@ -126,7 +128,7 @@ pokemonRepository.getAll().forEach((pokemon) =>{
     }
 })
 
-pokemonRepository.findPokemonByName('bulbasaur')
+pokemonRepository.findPokemonByName('charizard')
 
 
 
