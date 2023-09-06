@@ -58,11 +58,23 @@ let pokemonList = [
         type: ['water']
     }
 ];
+
+    // Retrieves all the list of pokemons
     function getAll(){
         return pokemonList
     }
+
+    // Add a new pokemon
     function add(pokemon){
-        return pokemonList.push(pokemon)
+        // conditional if object then add if not error message
+        if(typeof pokemon === 'object'){
+            return pokemonList.push(pokemon)
+        }else{
+            return console.error('Something went wrong! Add a pokemon object')
+        }
+    }
+    function addv(item){
+       
     }
     // IIFE return values to be global values
     return{
@@ -70,28 +82,14 @@ let pokemonList = [
         add: add
     }
 })() 
+// {name:'blas',height: 1.2,type:['water']}
 
-console.log(pokemonRepository.getAll())
-console.log(pokemonRepository.add({name: 'opi', height: 1.2, type: ['water']}))
-console.log(pokemonRepository.getAll())
-
-
-// Looping throught the pokemonList object
-// for(let i = 0; i < pokemonList.length; i++){
-//     // Add a conditional checking if the height of the pokemon is bigger or equal to 1.0    
-//     if(pokemonList[i].height >= 1.0){
-//         document.write(`${'<p>'} ${pokemonList[i].name} (height: ${pokemonList[i].height}) - Wow, that's big! ${'</p>'}`)
-//     }
-//     // Part of the code that escapes if to the height value doesn't meet the conditional
-//     else{
-//         document.write(`${'<p>'} ${pokemonList[i].name} (height: ${pokemonList[i].height}) ${"</p>"}`)
-//     }
-// }
-
+console.log('getAll', pokemonRepository.getAll())
+console.log('add',pokemonRepository.add())
+// Calling the function by the IFFE to retrieve the pokemon list
 // Re-factoring the for loop to the built-in function forEach()
-/*
-arrPokemons.forEach((pokemon) => {
-    if(pokemon.height >= 1.0){
+pokemonRepository.getAll().forEach((pokemon) =>{
+     if(pokemon.height >= 1.0){
         document.write(`${'<p>'} ${pokemon.name} (height: ${pokemon.height}) - Wow, that's big! ${'</p>'}`)
     }
     // Part of the code that escapes if to the height value doesn't meet the conditional
@@ -99,6 +97,6 @@ arrPokemons.forEach((pokemon) => {
         document.write(`${'<p>'} ${pokemon.name} (height: ${pokemon.height}) ${"</p>"}`)
     }
 })
-*/
+
 
 
