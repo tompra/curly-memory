@@ -73,18 +73,31 @@ let pokemonList = [
             return console.error('Something went wrong! Add a pokemon object')
         }
     }
+
     function addv(pokemon){
         // Valid keys to add a pokemon
         let validKeys = ['name','height','type']
         // The keys added by the function
-        let inputKeys = Object.keys(pokemon)   
-        // Checking if the pokemon added was an object and has the same key and value data type
-        if(typeof pokemon === 'object' && validKeys.length === inputKeys.length){
-            
-            
+        let inputKeys = Object.keys(pokemon)
+        // Valid value data type to add a pokemon
+        let validValues = [typeof 'string', typeof 1, typeof []]
+        // Values added by the function
+        let valuesAdded = Object.values(pokemon)  
+        // Checking if the the input key matches
+        let checkKeysMatch = inputKeys.every((key, index) => key === validKeys[index])
+        // Checking if the values data type are valid
+        let checkValidType = valuesAdded.every((value, index) => typeof value === validValues[index])
+        // If all the conditions meet the pokemon added has the correct input
+        if(typeof pokemon === 'object' && validKeys.length === inputKeys.length && checkKeysMatch && checkValidType){
+            return pokemonList.push(pokemon)
+        }else{
+            return console.error('Something went wrong! Add a pokemon object')
         }
 
     }
+
+    
+
     // IIFE return values to be global values
     return{
         getAll: getAll,
@@ -92,10 +105,6 @@ let pokemonList = [
         addv: addv
     }
 })() 
-
-console.log('getAll', pokemonRepository.getAll())
-console.log('add',pokemonRepository.addv({nae:'blas',height: 1.2,type:['water']}))
-// console.log('add',pokemonRepository.add({name:'blas',height: 1.2,type:['water']}))
 
 // Calling the function by the IFFE to retrieve the pokemon list
 // Re-factoring the for loop to the built-in function forEach()
