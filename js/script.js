@@ -58,12 +58,22 @@ let pokemonList = [
         type: ['water']
     }
 ];
-
+    function getAll(){
+        return pokemonList
+    }
+    function add(pokemon){
+        return pokemonList.push(pokemon)
+    }
+    // IIFE return values to be global values
     return{
-        
+        getAll: getAll,
+        add: add
     }
 })() 
 
+console.log(pokemonRepository.getAll())
+console.log(pokemonRepository.add({name: 'opi', height: 1.2, type: ['water']}))
+console.log(pokemonRepository.getAll())
 
 
 // Looping throught the pokemonList object
@@ -79,7 +89,7 @@ let pokemonList = [
 // }
 
 // Re-factoring the for loop to the built-in function forEach()
-
+/*
 arrPokemons.forEach((pokemon) => {
     if(pokemon.height >= 1.0){
         document.write(`${'<p>'} ${pokemon.name} (height: ${pokemon.height}) - Wow, that's big! ${'</p>'}`)
@@ -89,5 +99,6 @@ arrPokemons.forEach((pokemon) => {
         document.write(`${'<p>'} ${pokemon.name} (height: ${pokemon.height}) ${"</p>"}`)
     }
 })
+*/
 
 
