@@ -134,7 +134,7 @@ let pokemonRepository = (function () {
         createButtonElement.innerText = `${pokemon.name}`;
         // Append the new created button and list items to the parent element
         getListOfPokemon.appendChild(createListElement);
-        getListOfPokemon.appendChild(createButtonElement);
+        createListElement.appendChild(createButtonElement);
     }
 
     // IIFE return values to be global values

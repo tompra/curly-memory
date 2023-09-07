@@ -11,3 +11,22 @@ body {
     justify-content: center;
     align-items: center;
 }
+.pokemon-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(to bottom, #4caf50, #45a049);
+    color: #fff;
+    border: 2px solid #4caf50;
+    margin: 10px 0;
+    border-radius: 10px;
+}
