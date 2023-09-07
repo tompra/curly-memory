@@ -131,13 +131,9 @@ pokemonRepository.addv({name:'metapod', height: '0.7', type: 'fire'}) // Creates
 // Calling the function by the IFFE to retrieve the pokemon list
 // Re-factoring the for loop to the built-in function forEach()
 pokemonRepository.getAll().forEach((pokemon) =>{
-     if(pokemon.height >= 1.0){
-        document.write(`${'<p>'} ${pokemon.name} (height: ${pokemon.height}) - Wow, that's big! ${'</p>'}`)
-    }
-    // Part of the code that escapes if to the height value doesn't meet the conditional
-    else{
-        document.write(`${'<p>'} ${pokemon.name} (height: ${pokemon.height}) ${"</p>"}`)
-    }
+    let getListOfPokemon = document.querySelector('.pokemon-list')
+   
+    
 })
 
 
