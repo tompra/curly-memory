@@ -111,6 +111,7 @@ let pokemonRepository = (function () {
             return console.error('Something went wrong! Add a pokemon object');
         }
     }
+
     // Add searchByName parameter
     function findPokemonByName(searchByName) {
         // Filter the pokemon list to find the search pokemon
@@ -122,29 +123,38 @@ let pokemonRepository = (function () {
         //Log in the searched pokemon into the console
         console.table(searchedPokemon);
     }
+
     // Getting list of pokemons in the interface
     function addListItem(pokemon) {
         // Select the pokemon unordered list
         let getListOfPokemon = document.querySelector('.pokemon-list');
+
         // Create button and list element
         let createListElement = document.createElement('li');
         let createButtonElement = document.createElement('button');
 
         // Give the to the new button element the pokemon's name
         createButtonElement.innerText = `${pokemon.name}`;
+
         // Append the new created button and list items to the parent element
         getListOfPokemon.appendChild(createListElement);
         createListElement.appendChild(createButtonElement);
 
         // Add event listener to the buttons
-        createButtonElement.addEventListener('click', () => {
-            //checking if the event works in all the buttons
-            console.log('event happening');
-        });
+        eventShowDetails(createButtonElement, pokemon);
     }
+
     // Show details of the pokemons
-    function showDetails(pokemon) {
-        console.log(pokemonList);
+    function showDetails(pokemonList) {
+        // retrieving information from the pokemon list in a table
+        console.table(pokemonList);
+    }
+
+    // Event listener on clicking button to show more
+    function eventShowDetails(button, pokemon) {
+        button.addEventListener('click', () => {
+            showDetails(pokemon);
+        });
     }
 
     // IIFE return values to be global values
