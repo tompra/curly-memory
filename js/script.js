@@ -132,8 +132,8 @@ pokemonRepository.addv({name:'metapod', height: '0.7', type: 'fire'}) // Creates
 // Re-factoring the for loop to the built-in function forEach()
 pokemonRepository.getAll().forEach((pokemon) =>{
     let getListOfPokemon = document.querySelector('.pokemon-list')
-   
-    
+    let createList = document.createElement('li')
+    let createButton = document.createElement('button')
 })
 
 
