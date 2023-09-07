@@ -123,7 +123,7 @@ let pokemonRepository = (function () {
         console.table(searchedPokemon);
     }
     // Getting list of pokemons in the interface
-    function listOfPokemons(pokemon) {
+    function addListItem(pokemon) {
         // Select the pokemon unordered list
         let getListOfPokemon = document.querySelector('.pokemon-list');
         // Create button and list element
@@ -143,7 +143,7 @@ let pokemonRepository = (function () {
         add: add,
         addv: addv,
         findPokemonByName: findPokemonByName,
-        listOfPokemons: listOfPokemons,
+        addListItem: addListItem,
     };
 })();
 
@@ -163,5 +163,5 @@ let pokemonRepository = (function () {
 
 pokemonRepository.getAll().forEach(pokemon => {
     //Created a new function getListOfPokemons to continue the FP principle
-    pokemonRepository.listOfPokemons(pokemon);
+    pokemonRepository.addListItem(pokemon);
 });
