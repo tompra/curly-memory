@@ -135,6 +135,16 @@ let pokemonRepository = (function () {
         // Append the new created button and list items to the parent element
         getListOfPokemon.appendChild(createListElement);
         createListElement.appendChild(createButtonElement);
+
+        // Add event listener to the buttons
+        createButtonElement.addEventListener('click', () => {
+            //checking if the event works in all the buttons
+            console.log('event happening');
+        });
+    }
+    // Show details of the pokemons
+    function showDetails(pokemon) {
+        console.log(pokemonList);
     }
 
     // IIFE return values to be global values
@@ -144,6 +154,7 @@ let pokemonRepository = (function () {
         addv: addv,
         findPokemonByName: findPokemonByName,
         addListItem: addListItem,
+        showDetails: showDetails,
     };
 })();
 
@@ -165,3 +176,6 @@ pokemonRepository.getAll().forEach(pokemon => {
     //Created a new function getListOfPokemons to continue the FP principle
     pokemonRepository.addListItem(pokemon);
 });
+
+//Checking if showDetails function retrieve the pokemonList array
+pokemonRepository.showDetails();
