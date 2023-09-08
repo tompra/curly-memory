@@ -1,63 +1,40 @@
 // Declaring IIFE inside a variable
 let pokemonRepository = (function () {
-    // Object with the pokemons and characteristics
-    let pokemonList = [
-        {
-            name: 'bulbasaur',
-            height: 0.7,
-            type: ['grass', 'poison'],
-        },
-        {
-            name: 'charmander',
-            height: 0.6,
-            type: ['fire'],
-        },
-        {
-            name: 'squirtle',
-            height: 0.5,
-            type: ['water'],
-        },
-        {
-            name: 'pidgey',
-            height: 0.3,
-            type: ['flying', 'normal'],
-        },
-        {
-            name: 'weddle',
-            height: 0.3,
-            type: ['bug', 'poison'],
-        },
-        {
-            name: 'ivysaur',
-            height: 1.0,
-            type: ['grass', 'poison'],
-        },
-        {
-            name: 'venasaur',
-            height: 2.0,
-            type: ['grass', 'poison'],
-        },
-        {
-            name: 'charmaleon',
-            height: 1.1,
-            type: ['fire'],
-        },
-        {
-            name: 'charizard',
-            height: 1.7,
-            type: ['fire', 'flying'],
-        },
-        {
-            name: 'wartortle',
-            height: 1.0,
-            type: ['water'],
-        },
-        {
-            name: 'blastoise',
-            height: 1.6,
-            type: ['water'],
-        },
-    ];
+    // Added empty array for the pokemon list
+    let pokemonList = []
+    // apiURL data
+    let apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=150'
+
+    // Load list function to fetch the actual data
+    function loadList(){
+        return fetch(apiURL).then((response) => {
+            return response.json()
+        }).then((data) => {
+            data.results.forEach((item) =>{
+                let pokemon = {
+                    name : item.name,
+                    detailsUrl: item.url
+                }
+                add(pokemon)
+            })
+        }).catch((e) =>{
+            console.error(e)
+        })
+    }
+
+    // // Load details function
+    // function loadDetails(item){
+    //     let url = item.detailsUrl;
+    //     return fetch(url).then((response) =>{
+    //         return response.json()
+    //     }).then((data) =>{
+    //         console.log(data)
+    //     }).catch((e) =>{
+    //         console.error(e)
+    //     })
+    // }
+
+
 
     // Retrieves all the list of pokemons
     function getAll() {
@@ -71,10 +48,7 @@ let pokemonRepository = (function () {
     function add(pokemon) {
         // conditional if object then add if not error message
         if (
-            typeof pokemon === 'object' &&
-            pokemon.hasOwnProperty('name') &&
-            pokemon.hasOwnProperty('height') &&
-            pokemon.hasOwnProperty('type')
+            typeof pokemon === 'object'
         ) {
             return pokemonList.push(pokemon);
         } else {
@@ -165,27 +139,19 @@ let pokemonRepository = (function () {
         findPokemonByName: findPokemonByName,
         addListItem: addListItem,
         showDetails: showDetails,
+        loadList: loadList,
     };
 })();
 
-// Examples
 
-// Searching a pokemon by name or pokemons that start with
-// pokemonRepository.findPokemonByName('char');
+//Checking if showDetails function retrieve the pokemonList array
+pokemonRepository.showDetails();
 
-// // Adding a new pokemon to the list
-// pokemonRepository.add({ name: 'caterpie', height: 0.3, type: ['bug'] });
-// pokemonRepository.add({ nae: 'caterpie', height: 0.3, tye: ['bug'] }); // Creates an error by wrong key
-// pokemonRepository.addv({ name: 'metapod', height: 0.7, type: ['bug'] });
-// pokemonRepository.addv({ name: 'metapod', height: '0.7', type: 'fire' }); // Creates an error by wrong key and value
-
-// Calling the function by the IFFE to retrieve the pokemon list
-// Re-factoring the for loop to the built-in function forEach()
-
-pokemonRepository.getAll().forEach(pokemon => {
+//Checking if the data was fetched
+pokemonRepository.loadList().then(() =>{
+    pokemonRepository.getAll().forEach(pokemon => {
     //Created a new function getListOfPokemons to continue the FP principle
     pokemonRepository.addListItem(pokemon);
 });
 
-//Checking if showDetails function retrieve the pokemonList array
-pokemonRepository.showDetails();
+})
