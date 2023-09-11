@@ -162,7 +162,7 @@ let pokemonRepository = (function () {
     modal.classList.add('modal')
 
     let closeButtonElement = document.createElement('button')
-    closeButtonElement.innerText = "Close"
+    closeButtonElement.innerText = "X"
     closeButtonElement.classList.add('modal-close')
     //Add event listener to close modal
     closeButtonElement.addEventListener('click', hideModal)

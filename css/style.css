@@ -31,6 +31,7 @@ body {
     margin: 10px 0;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: capitalize;
 }
 
 .pokemon-list button:hover {
@@ -62,16 +63,21 @@ body {
   padding: 15px;
   width: 100%;
   max-width: 700px;
-  text-align: left;
   color: black;
+}
+.modal img{
+    border: 2px solid black;
+    border-radius: 5px;
 }
 
 .modal-close {
   float: right;
   border: 0;
+  color: black;
   background: none;
-  color: #777;
-  text-decoration: underline;
+  font-weight: 800;
+  display: flex;
+  justify-content: end;
 }
 
 .modal > h1{
