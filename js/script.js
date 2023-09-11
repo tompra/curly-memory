@@ -199,6 +199,9 @@ let pokemonRepository = (function () {
 
   }
   // Hide modal with escape key
+  window.addEventListener('keydown', (e) =>{
+    if(e.key === 'Escape' && modalContainer.classList.contains('is-visible')) hideModal()
+  })
 
   // Hide modadl clicking outside of the modal container
 
