@@ -19,7 +19,7 @@ body {
     align-items: center;
     list-style: none;
 }
-button {
+.pokemon-list button {
     display: inline-block;
     padding: 10px 20px;
     text-align: center;
@@ -33,7 +33,7 @@ button {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
+.pokemon-list button:hover {
     background: linear-gradient(to top, #4caf50, #45a049);
     opacity: 0.9;
 }
@@ -51,7 +51,7 @@ button:hover {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: grid;
+  display: flex;
   text-align: center;
 }
 
@@ -72,4 +72,12 @@ button:hover {
   background: none;
   color: #777;
   text-decoration: underline;
+}
+
+.modal > h1{
+    text-transform: capitalize;
+    margin-bottom: 5px;
+}
+.modal > p{
+    margin-bottom: 5px;
 }

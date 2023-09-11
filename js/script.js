@@ -170,9 +170,11 @@ let pokemonRepository = (function () {
     let heading = document.createElement('h1')
     heading.innerText = pokemon.name
 
-    let description = document.createElement('p')
+    let descriptionType = document.createElement('p')
+    let descriptionHeight = document.createElement('p')
     let typeNames = pokemon.types.map((item) => item.type.name).join(', ')
-    description.innerText = `Height: ${pokemon.height}m \n Type: ${typeNames}.`
+    descriptionType.innerText = `Type: ${typeNames}.`
+    descriptionHeight.innerText = `Height: ${pokemon.height}m.`
 
     let image = document.createElement('img')
     image.setAttribute('src', pokemon.img)
@@ -183,7 +185,8 @@ let pokemonRepository = (function () {
     // Append every element created
     modal.appendChild(closeButtonElement)
     modal.appendChild(heading)
-    modal.appendChild(description)
+    modal.appendChild(descriptionType)
+    modal.appendChild(descriptionHeight)
     modal.appendChild(image)
     modalContainer.appendChild(modal)
 
