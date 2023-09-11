@@ -4,6 +4,10 @@ let pokemonRepository = (function () {
     let pokemonList = []
     // apiURL data
     let apiURL = 'https://pokeapi.co/api/v2/pokemon/?limit=150'
+    // Creating loading element
+    let loadingElement = document.createElement('p')
+    loadingElement.innerHTML = 'Loading...'
+
 
 
     // Retrieves all the list of pokemons
@@ -86,12 +90,8 @@ let pokemonRepository = (function () {
     // Show details of the pokemons
     function showDetails(pokemon) {
         // retrieving information from the pokemon list in a table
-        // console.table(pokemon);
-        // loadDetails(pokemon).then(() => {
-        //     console.log(pokemon)
-        // })
         loadDetails(pokemon).then(() =>{
-            console.log(pokemon)
+            console.table(pokemon)
         }).catch((e) =>{
             console.error(e)
         })
@@ -106,34 +106,51 @@ let pokemonRepository = (function () {
 
     // Load list function to fetch the actual data
    function loadList(){
-    return fetch(apiURL).then((response) =>{
-        return response.json()
-    }).then((data) =>{
-        data.results.forEach((item) =>{
-            let pokemon = {
-                name: item.name,
-                detailsUrl: item.url
-            }
-            add(pokemon)
+        showLoadingMessage()
+        return fetch(apiURL).then((response) =>{
+            return response.json()
+        }).then((data) =>{
+            hideLoadingMessage()
+            data.results.forEach((item) =>{
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                }
+                add(pokemon)
+            })
+        }).catch((e) =>{
+            hideLoadingMessage()
+            console.error(e)
         })
-    })
-   }
+    }
+   
 
-    // Load details function
+  // Load details function
   function loadDetails(item) {
+       showLoadingMessage()
        let url = item.detailsUrl;
        return fetch(url).then((response) =>{
             return response.json()
        }).then((data) => {
+            hideLoadingMessage()
             item.img = data.sprites.front_default,
             item.height = data.height,
             item.types = data.types
        }).catch((e) =>{
+            hideLoadingMessage()
             console.error(e)
        })
        
   }
 
+  //loading message functions
+  function showLoadingMessage(){
+    document.body.appendChild(loadingElement)
+  }
+
+  function hideLoadingMessage(){
+    document.body.removeChild(loadingElement)
+  }
 
 
     // IIFE return values to be global values
@@ -149,9 +166,6 @@ let pokemonRepository = (function () {
     };
 })();
 
-
-//Checking if showDetails function retrieve the pokemonList array
-// pokemonRepository.showDetails();
 
 //Checking if the data was fetched
 pokemonRepository.loadList().then(() =>{
