@@ -157,25 +157,32 @@ let pokemonRepository = (function () {
   function showModal(pokemon){
     // Clear all before adding elements
     modalContainer.innerHTML = ''
+    
     // Create elements: modal,closeButton, heading, content, img
     let modal = document.createElement('div')
     modal.classList.add('modal')
 
+    // Close button
     let closeButtonElement = document.createElement('button')
     closeButtonElement.innerText = "X"
     closeButtonElement.classList.add('modal-close')
     //Add event listener to close modal
     closeButtonElement.addEventListener('click', hideModal)
 
+    // Heading
     let heading = document.createElement('h1')
     heading.innerText = pokemon.name
 
+    // Content - Description
     let descriptionType = document.createElement('p')
     let descriptionHeight = document.createElement('p')
-    let typeNames = pokemon.types.map((item) => item.type.name).join(', ')
+    let typeNames = pokemon.types.map((item) => {
+        return item.type.name.charAt(0).toUpperCase() + item.type.name.slice(1)
+    }).join(', ')
     descriptionType.innerText = `Type: ${typeNames}.`
     descriptionHeight.innerText = `Height: ${pokemon.height}m.`
 
+    // Image
     let image = document.createElement('img')
     image.setAttribute('src', pokemon.img)
     image.setAttribute('width', 150)

@@ -59,11 +59,12 @@ body {
 .modal {
   margin: auto;
   display: inline-block;
-  background: #fff;
+  background: #e7cdff;
   padding: 15px;
   width: 100%;
-  max-width: 700px;
-  color: black;
+  max-width: 600px;
+  color: #4b4b4b;
+  border-radius: 15px;
 }
 .modal img{
     border: 2px solid black;
