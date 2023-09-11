@@ -36,3 +36,32 @@ button:hover {
     background: linear-gradient(to top, #4caf50, #45a049);
     opacity: 0.9;
 }
+
+/* #modalContainer{
+    display: none
+} */
+
+#modalContainer{
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: #0c0c0c;
+}
+
+.modal{
+    display: inline-block;
+    background-color: #fff;
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+}
+
+.modal-close{
+    float: right;
+    border: 0;
+    background: none;
+    color: #908d8d;
+    text-decoration: underline;
+}

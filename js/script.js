@@ -7,6 +7,8 @@ let pokemonRepository = (function () {
     // Creating loading element
     let loadingElement = document.createElement('p')
     loadingElement.innerHTML = 'Loading...'
+    // Selecting modal container
+    let modalContainer = document.querySelector('#modalContainer')
 
 
 
@@ -106,42 +108,22 @@ let pokemonRepository = (function () {
 
     // Load list function to fetch the actual data
    function loadList(){
-        showLoadingMessage()
-        return new Promise((resolve, reject) =>{
-            setTimeout(() =>{
-                fetch(apiURL).then((response) =>{
-                    return response.json()
-                }).then((data) =>{
-                    data.results.forEach((item) =>{
-                        let pokemon = {
-                            name : item.name,
-                            detailsUrl : item.detailsUrl
-                        }
-                        add(pokemon)
-                        resolve(pokemon)
-
-                    })
-                }).catch((e) =>{
-                    console.error(e)
-                    reject(e)
-                })
-            }, 3000)
+        showLoadingMessage()  
+        return fetch(apiURL).then((response) =>{
+            return response.json()
+        }).then((data) =>{
+            hideLoadingMessage()
+            data.results.forEach((item) =>{
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                }
+                add(pokemon)
+            })
+        }).catch((e) =>{
+            hideLoadingMessage()
+            console.error(e)
         })
-        // return fetch(apiURL).then((response) =>{
-        //     return response.json()
-        // }).then((data) =>{
-        //     hideLoadingMessage()
-        //     data.results.forEach((item) =>{
-        //         let pokemon = {
-        //             name: item.name,
-        //             detailsUrl: item.url
-        //         }
-        //         add(pokemon)
-        //     })
-        // }).catch((e) =>{
-        //     hideLoadingMessage()
-        //     console.error(e)
-        // })
     }
    
 
@@ -149,35 +131,17 @@ let pokemonRepository = (function () {
   function loadDetails(item) {
        showLoadingMessage()
        let url = item.detailsUrl;
-    //    return fetch(url).then((response) =>{
-    //         return response.json()
-    //    }).then((data) => {
-    //         hideLoadingMessage()
-    //         item.img = data.sprites.front_default,
-    //         item.height = data.height,
-    //         item.types = data.types
-    //    }).catch((e) =>{
-    //         hideLoadingMessage()
-    //         console.error(e)
-    //    })
-        return new Promise((resolve, reject) =>{
-            setTimeout(() =>{
-                fetch(url).then((response) => response.json())
-                .then((data) => {
-                    hideLoadingMessage()
-                    item.img = data.sprites.front_default;
-                    item.height = data.height;
-                    item.types = data.types
-                    resolve(item)
-                })
-                .catch((e) =>{
-                    hideLoadingMessage()
-                    console.error(e)
-                    reject(e)
-                })
-            }, 3000)
-        })   
-
+       return fetch(url).then((response) =>{
+            return response.json()
+       }).then((data) => {
+            hideLoadingMessage()
+            item.img = data.sprites.front_default,
+            item.height = data.height,
+            item.types = data.types
+       }).catch((e) =>{
+            hideLoadingMessage()
+            console.error(e)
+       })
   }
 
   //loading message functions
@@ -188,6 +152,8 @@ let pokemonRepository = (function () {
   function hideLoadingMessage(){
     document.body.removeChild(loadingElement)
   }
+
+  
 
 
     // IIFE return values to be global values
