@@ -70,6 +70,9 @@ body {
     border: 2px solid black;
     border-radius: 5px;
 }
+.modal img:hover{
+    opacity: 0.9;
+}
 
 .modal-close {
   float: right;
