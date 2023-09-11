@@ -8,7 +8,7 @@ let pokemonRepository = (function () {
     let loadingElement = document.createElement('p')
     loadingElement.innerHTML = 'Loading...'
     // Selecting modal container
-    let modalContainer = document.querySelector('#modalContainer')
+    let modalContainer = document.querySelector('#modal-container')
 
 
 
@@ -93,7 +93,7 @@ let pokemonRepository = (function () {
     function showDetails(pokemon) {
         // retrieving information from the pokemon list in a table
         loadDetails(pokemon).then(() =>{
-            console.table(pokemon)
+            showModal(pokemon)
         }).catch((e) =>{
             console.error(e)
         })
@@ -153,7 +153,54 @@ let pokemonRepository = (function () {
     document.body.removeChild(loadingElement)
   }
 
-  
+  // Show modal
+  function showModal(pokemon){
+    // Clear all before adding elements
+    modalContainer.innerHTML = ''
+    // Create elements: modal,closeButton, heading, content, img
+    let modal = document.createElement('div')
+    modal.classList.add('modal')
+
+    let closeButtonElement = document.createElement('button')
+    closeButtonElement.innerText = "Close"
+    closeButtonElement.classList.add('modal-close')
+    //Add event listener to close modal
+    closeButtonElement.addEventListener('click', hideModal)
+
+    let heading = document.createElement('h1')
+    heading.innerText = pokemon.name
+
+    let description = document.createElement('p')
+    let typeNames = pokemon.types.map((item) => item.type.name).join(', ')
+    description.innerText = `Height: ${pokemon.height}m \n Type: ${typeNames}.`
+
+    let image = document.createElement('img')
+    image.setAttribute('src', pokemon.img)
+    image.setAttribute('width', 150)
+    image.setAttribute('height', 150)
+    image.setAttribute('alt', `Image of the ${pokemon.name}`)
+
+    // Append every element created
+    modal.appendChild(closeButtonElement)
+    modal.appendChild(heading)
+    modal.appendChild(description)
+    modal.appendChild(image)
+    modalContainer.appendChild(modal)
+
+    // Add class to make modal visible
+    modalContainer.classList.add('is-visible')
+
+  }
+
+  // Hide modal 
+  function hideModal(){
+    // Remove class list that makes modal visible
+    modalContainer.classList.remove('is-visible')
+
+  }
+  // Hide modal with escape key
+
+  // Hide modadl clicking outside of the modal container
 
 
     // IIFE return values to be global values
