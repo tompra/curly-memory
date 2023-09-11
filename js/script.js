@@ -204,6 +204,9 @@ let pokemonRepository = (function () {
   })
 
   // Hide modadl clicking outside of the modal container
+  modalContainer.addEventListener('click', (e) =>{
+    if(e.target === modalContainer) hideModal()
+})
 
 
     // IIFE return values to be global values
