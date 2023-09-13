@@ -85,6 +85,13 @@ let pokemonRepository = (function () {
         getListOfPokemon.appendChild(createListElement);
         createListElement.appendChild(createButtonElement);
 
+        // Add class to li elements
+        createListElement.classList.add('list-group-item')
+        createListElement.classList.add('list-group-item-action')
+        createButtonElement.classList.add('btn')
+        createButtonElement.classList.add('btn-warning')
+
+
         // Add event listener to the buttons
         eventShowDetails(createButtonElement, pokemon);
     }

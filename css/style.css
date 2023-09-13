@@ -19,7 +19,7 @@ body {
     align-items: center;
     list-style: none;
 }
-.pokemon-list button {
+/* .pokemon-list button {
     display: inline-block;
     padding: 10px 20px;
     text-align: center;
@@ -37,7 +37,7 @@ body {
 .pokemon-list button:hover {
     background: linear-gradient(to top, #4caf50, #45a049);
     opacity: 0.9;
-}
+} */
 
 #modal-container {
   display: none;
