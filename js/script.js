@@ -7,8 +7,6 @@ let pokemonRepository = (function () {
     // Creating loading element
     let loadingElement = document.createElement('p')
     loadingElement.innerHTML = 'Loading...'
-    // Selecting modal container
-    let modalContainer = document.querySelector('#modal-container')
 
 
 
@@ -166,70 +164,54 @@ let pokemonRepository = (function () {
 
   // Show modal
   function showModal(pokemon){
-    // // Clear all before adding elements
-    // modalContainer.innerHTML = ''
+    const modalHeader = document.querySelector('.modal-header')
+    const modalBody = document.querySelector('.modal-body')
+
+    // Clear all before adding elements
+    modalHeader.innerHTML = '';
+    modalBody.innerHTML = '';
+
+    // Heading
+    const heading = document.createElement('h1')
+    heading.classList.add('modal-title')
+    heading.classList.add('fs-3')
+    heading.innerText = pokemon.name
     
-    // // Create elements: modal,closeButton, heading, content, img
-    // let modal = document.createElement('div')
-    // modal.classList.add('modal')
+    // Close button
+    const closeButton = document.createElement('button')
+    closeButton.setAttribute('type', 'button')
+    closeButton.setAttribute('data-bs-dismiss', 'modal')
+    closeButton.setAttribute('aria-label', 'close')
+    closeButton.classList.add('btn-close')
 
-    // // Close button
-    // let closeButtonElement = document.createElement('button')
-    // closeButtonElement.innerText = "X"
-    // closeButtonElement.classList.add('modal-close')
-    // //Add event listener to close modal
-    // closeButtonElement.addEventListener('click', hideModal)
+    // Content 
+    const descriptionType = document.createElement('p')
+    const descriptionHeight = document.createElement('p')
+    const typeNames = pokemon.types.map((item) =>{
+        return item.type.name.charAt(0).toUpperCase() + item.type.name.slice(1)
+    }).join(', ')
+    descriptionType.classList.add('text-warning')
+    descriptionHeight.classList.add('text-warning')
+    descriptionType.innerText = `Type: ${typeNames}.`
+    descriptionHeight.innerText = `Height: ${pokemon.height}.`
 
-    // // Heading
-    // let heading = document.createElement('h1')
-    // heading.innerText = pokemon.name
-
-    // // Content - Description
-    // let descriptionType = document.createElement('p')
-    // let descriptionHeight = document.createElement('p')
-    // let typeNames = pokemon.types.map((item) => {
-    //     return item.type.name.charAt(0).toUpperCase() + item.type.name.slice(1)
-    // }).join(', ')
-    // descriptionType.innerText = `Type: ${typeNames}.`
-    // descriptionHeight.innerText = `Height: ${pokemon.height}m.`
-
-    // // Image
-    // let image = document.createElement('img')
-    // image.setAttribute('src', pokemon.img)
-    // image.setAttribute('width', 150)
-    // image.setAttribute('height', 150)
-    // image.setAttribute('alt', `Image of the ${pokemon.name}`)
-
-    // // Append every element created
-    // modal.appendChild(closeButtonElement)
-    // modal.appendChild(heading)
-    // modal.appendChild(descriptionType)
-    // modal.appendChild(descriptionHeight)
-    // modal.appendChild(image)
-    // modalContainer.appendChild(modal)
-
-    // // Add class to make modal visible
-    // modalContainer.classList.add('is-visible')
+    // Image
+    const image = document.createElement('img')
+    image.setAttribute('src', pokemon.img)
+    image.classList.add('img-fluid')
+    image.classList.add('rounded')
+    image.setAttribute('width', 150)
+    image.setAttribute('height', 150)
+    image.setAttribute('alt', `Image of ${pokemon.name}`)
 
 
-
+    // Append
+    modalHeader.appendChild(heading)
+    modalHeader.appendChild(closeButton)
+    modalBody.appendChild(descriptionHeight)
+    modalBody.appendChild(descriptionType)
+    modalBody.appendChild(image)
   }
-
-//   // Hide modal 
-//   function hideModal(){
-//     // Remove class list that makes modal visible
-//     modalContainer.classList.remove('is-visible')
-
-//   }
-//   // Hide modal with escape key
-//   window.addEventListener('keydown', (e) =>{
-//     if(e.key === 'Escape' && modalContainer.classList.contains('is-visible')) hideModal()
-//   })
-
-//   // Hide modadl clicking outside of the modal container
-//   modalContainer.addEventListener('click', (e) =>{
-//     if(e.target === modalContainer) hideModal()
-// })
 
 
     // IIFE return values to be global values

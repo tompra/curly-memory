@@ -12,13 +12,22 @@ body {
     align-items: center;
     min-height: 100vh;
 }
-.pokemon-list {
+.modal-header h1{
+    color:black;
+    text-transform: capitalize;
+}
+
+
+/* .pokemon-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     list-style: none;
-}
+} */
+
+
+
 /* .pokemon-list button {
     display: inline-block;
     padding: 10px 20px;
