@@ -8,8 +8,6 @@ let pokemonRepository = (function () {
     let loadingElement = document.createElement('p')
     loadingElement.innerHTML = 'Loading...'
 
-
-
     // Retrieves all the list of pokemons
     function getAll() {
         return pokemonList;
@@ -19,36 +17,6 @@ let pokemonRepository = (function () {
     function add(pokemon) {
         // conditional if object then add if not error message
         if (typeof pokemon === 'object' && 'name' in pokemon && 'detailsUrl' in pokemon) {
-            return pokemonList.push(pokemon);
-        } else {
-            return console.error('Something went wrong! Add a pokemon object');
-        }
-    }
-
-    function addv(pokemon) {
-        // Valid keys to add a pokemon
-        let validKeys = ['name', 'height', 'type'];
-        // The keys added by the function
-        let inputKeys = Object.keys(pokemon);
-        // Valid value data type to add a pokemon
-        let validValues = [typeof 'string', typeof 1, typeof []];
-        // Values added by the function
-        let valuesAdded = Object.values(pokemon);
-        // Checking if the the input key matches
-        let checkKeysMatch = inputKeys.every(
-            (key, index) => key === validKeys[index]
-        );
-        // Checking if the values data type are valid
-        let checkValidType = valuesAdded.every(
-            (value, index) => typeof value === validValues[index]
-        );
-        // If all the conditions meet the pokemon added has the correct input
-        if (
-            typeof pokemon === 'object' &&
-            validKeys.length === inputKeys.length &&
-            checkKeysMatch &&
-            checkValidType
-        ) {
             return pokemonList.push(pokemon);
         } else {
             return console.error('Something went wrong! Add a pokemon object');
@@ -208,9 +176,9 @@ let pokemonRepository = (function () {
     // Append
     modalHeader.appendChild(heading)
     modalHeader.appendChild(closeButton)
+    modalBody.appendChild(image)
     modalBody.appendChild(descriptionHeight)
     modalBody.appendChild(descriptionType)
-    modalBody.appendChild(image)
   }
 
 
@@ -218,12 +186,9 @@ let pokemonRepository = (function () {
     return {
         getAll: getAll,
         add: add,
-        addv: addv,
         findPokemonByName: findPokemonByName,
         addListItem: addListItem,
-        showDetails: showDetails,
         loadList: loadList,
-        loadDetails: loadDetails
     };
 })();
 
