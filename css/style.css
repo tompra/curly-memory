@@ -6,14 +6,24 @@
 body {
     background-color: blueviolet;
     color: aliceblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
     min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
 }
 .modal-header h1{
     color:black;
     text-transform: capitalize;
 }
-
+nav, .pokemon-list{
+    width: 100%;
+}
+.list-group{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.list-group-item{
+    background-color: transparent;
+    border: 0;
+}

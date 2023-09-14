@@ -38,7 +38,7 @@ let pokemonRepository = (function () {
     // Getting list of pokemons in the interface
     function addListItem(pokemon) {
         // Select the pokemon unordered list
-        let getListOfPokemon = document.querySelector('.pokemon-list');
+        let getListOfPokemon = document.querySelector('.list-group');
 
         // Create button and list element
         let createListElement = document.createElement('li');
@@ -53,7 +53,7 @@ let pokemonRepository = (function () {
 
         // Add class to li elements
         createListElement.classList.add('list-group-item')
-        createListElement.classList.add('list-group-item-action')
+        // createListElement.classList.add('list-group-item-action')
         // Add class to button element
         createButtonElement.classList.add('btn')
         createButtonElement.classList.add('btn-warning')
@@ -61,6 +61,10 @@ let pokemonRepository = (function () {
         createButtonElement.setAttribute('data-bs-toggle', 'modal')
         createButtonElement.setAttribute('data-bs-target', '#exampleModal')
 
+        createListElement.classList.add('col-lg-3')
+        createListElement.classList.add('col-sm-6')
+        createListElement.classList.add('col-md-4')
+        createListElement.classList.add('col-6')
 
         // Add event listener to the buttons
         eventShowDetails(createButtonElement, pokemon);
