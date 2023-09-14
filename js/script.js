@@ -108,7 +108,6 @@ let pokemonRepository = (function () {
             return response.json()
        }).then((data) => {
             hideLoadingMessage()
-            console.log(data.abilities)
             item.img = data.sprites.front_default,
             item.height = data.height,
             item.types = data.types
@@ -188,7 +187,7 @@ let pokemonRepository = (function () {
     modalBody.appendChild(descriptionAbilities)
   }
 
-  
+
 
 
     // IIFE return values to be global values
@@ -216,7 +215,7 @@ searchBtn.addEventListener('click', e =>{
     e.preventDefault();
     let pokemonList = document.querySelector('.list-group')
     pokemonList.innerHTML= ''
-    const searchValue = searchInput.value
+    const searchValue = searchInput.value.toLowerCase()
     pokemonRepository.getAll().filter((pokemon) =>{
        if(pokemon.name.startsWith(searchValue)){
         return pokemonRepository.addListItem(pokemon)
