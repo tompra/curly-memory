@@ -25,10 +25,11 @@ let pokemonRepository = (function () {
 
     // Getting list of pokemons in the interface
     function addListItem(pokemon) {
+        console.log(pokemon)
         // Select the pokemon unordered list
         let getListOfPokemon = document.querySelector('.list-group');
 
-        // Create button and list element
+        // Create button, list element, image
         let createListElement = document.createElement('li');
         let createButtonElement = document.createElement('button');
 
@@ -86,10 +87,11 @@ let pokemonRepository = (function () {
             return response.json()
         }).then((data) =>{
             hideLoadingMessage()
-            data.results.forEach((item) =>{
+            data.results.forEach((item,index) =>{
                 let pokemon = {
                     name: item.name,
-                    detailsUrl: item.url
+                    detailsUrl: item.url,
+                    id: index + 1
                 }
                 add(pokemon)
             })
@@ -186,8 +188,6 @@ let pokemonRepository = (function () {
     modalBody.appendChild(descriptionType)
     modalBody.appendChild(descriptionAbilities)
   }
-
-
 
 
     // IIFE return values to be global values
