@@ -13,8 +13,8 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid navigation--container">
             <a class="navbar-brand" href="#">
                 <img src="images/pokedexx.svg" alt="Pokedex Logo" class="d-inline-block align-text-top">
             </a>
@@ -22,16 +22,16 @@
             <form class="d-flex" role="search">
                 <label for="search-input" class="visually-hidden">Search Pokemon</label>
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search Pokemon"
-                    id="searchInput" />
-                <button class="btn btn-outline-success" id="searchBtn">Search</button>
-                <button class="btn btn-outline-success" id="clearBtn">Clear</button>
+                    id="searchInput" autocomplete="off" />
+                <button class="btn btn-danger" id="searchBtn">Search</button>
+                <button class="btn btn-danger" id="clearBtn">Clear</button>
             </form>
         </div>
     </nav>
 
     <!-- Pokemon list -->
 
-    <div class="container">
+    <div class="container mt-4">
         <div class="row">
             <ul class="list-group pokemon-list" role="list"></ul>
         </div>
@@ -41,7 +41,7 @@
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="Pokemon" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-center">
+            <div class="modal-content">
                 <div class="modal-header"></div>
                 <div class="modal-body"></div>
             </div>

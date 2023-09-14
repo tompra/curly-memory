@@ -10,14 +10,18 @@ body {
     min-height: 100vh;
     min-width: 100vw;
     overflow-x: hidden;
-}
-.modal-header h1{
-    color:black;
-    text-transform: capitalize;
+    text-align: center;
 }
 nav, .pokemon-list{
     width: 100%;
 }
+.navigation--container{
+    margin: 0 50px;
+}
+form button{
+    margin: 0 10px;
+}
+
 .list-group{
     display:flex;
     flex-direction: row;
@@ -33,6 +37,8 @@ nav, .pokemon-list{
     padding: 15px;
     width: 100%;
     text-transform: capitalize;
+    font-weight: 700;
+    color: #CC0000;
 }
 .img-button{
     width: 50px;
@@ -41,4 +47,16 @@ nav, .pokemon-list{
 .img-card{
     width: 200px;
     object-fit: cover;
+    background-color: rgb(255, 255, 255);
 }
+.modal-content{
+    background-color:#3B4CCA;
+    border: 5px solid #CC0000;
+}
+.modal-header h1{
+    text-transform: capitalize;
+}
+.modal-body > *{
+    margin: 15px 0;
+}
+

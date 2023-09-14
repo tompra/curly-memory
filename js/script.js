@@ -25,7 +25,6 @@ let pokemonRepository = (function () {
 
     // Getting list of pokemons in the interface
     function addListItem(pokemon) {
-        console.log(pokemon.id)
         // Select the pokemon unordered list
         let getListOfPokemon = document.querySelector('.list-group');
 
@@ -116,7 +115,6 @@ let pokemonRepository = (function () {
             return response.json()
        }).then((data) => {
             hideLoadingMessage()
-            console.log(data.sprites.front_default);
             item.img = data.sprites.front_default,
             item.height = data.height,
             item.types = data.types
@@ -155,8 +153,11 @@ let pokemonRepository = (function () {
     const closeButton = document.createElement('button')
     closeButton.setAttribute('type', 'button')
     closeButton.setAttribute('data-bs-dismiss', 'modal')
+    closeButton.setAttribute('data-bs-toggle', 'modal')
+    closeButton.setAttribute('data-bs-target', '#exampleModal')
     closeButton.setAttribute('aria-label', 'close')
     closeButton.classList.add('btn-close')
+    closeButton.classList.add('text-light-emphasis')
 
     // Content 
     const descriptionType = document.createElement('p')
@@ -164,8 +165,8 @@ let pokemonRepository = (function () {
     const typeNames = pokemon.types.map((item) =>{
         return item.type.name.charAt(0).toUpperCase() + item.type.name.slice(1)
     }).join(', ')
-    descriptionType.classList.add('text-warning')
-    descriptionHeight.classList.add('text-warning')
+    // descriptionType.classList.add('text-warning')
+    // descriptionHeight.classList.add('text-warning')
     descriptionType.innerText = `Type: ${typeNames}.`
     descriptionHeight.innerText = `Height: ${pokemon.height}.`
 
@@ -183,7 +184,7 @@ let pokemonRepository = (function () {
        return item.ability.name.charAt(0).toUpperCase() + item.ability.name.slice(1)
     }).join(', ')
     descriptionAbilities.innerText = `Abilities: ${pokemonAbilities}`
-    descriptionAbilities.classList.add('text-warning')
+    // descriptionAbilities.classList.add('text-danger')
 
 
     // Append
