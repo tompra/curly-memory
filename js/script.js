@@ -23,18 +23,6 @@ let pokemonRepository = (function () {
         }
     }
 
-    // Add searchByName parameter
-    function findPokemonByName(searchByName) {
-        // Filter the pokemon list to find the search pokemon
-        // Put the filter method into a variable to return the value searched
-        let searchedPokemon = pokemonList.filter(pokemon => {
-            // Find the full name or the pokemons that start with using the startWith string method
-            return pokemon.name.startsWith(searchByName);
-        });
-        //Log in the searched pokemon into the console
-        console.table(searchedPokemon);
-    }
-
     // Getting list of pokemons in the interface
     function addListItem(pokemon) {
         // Select the pokemon unordered list
@@ -54,9 +42,12 @@ let pokemonRepository = (function () {
         // Add class to li elements
         createListElement.classList.add('list-group-item')
         // createListElement.classList.add('list-group-item-action')
+
         // Add class to button element
         createButtonElement.classList.add('btn')
         createButtonElement.classList.add('btn-warning')
+        createButtonElement.classList.add('button-pokemon')
+
         // Add attribute to button to toggle modal
         createButtonElement.setAttribute('data-bs-toggle', 'modal')
         createButtonElement.setAttribute('data-bs-target', '#exampleModal')
@@ -65,6 +56,7 @@ let pokemonRepository = (function () {
         createListElement.classList.add('col-sm-6')
         createListElement.classList.add('col-md-4')
         createListElement.classList.add('col-6')
+        
 
         // Add event listener to the buttons
         eventShowDetails(createButtonElement, pokemon);
@@ -116,9 +108,11 @@ let pokemonRepository = (function () {
             return response.json()
        }).then((data) => {
             hideLoadingMessage()
+            console.log(data.abilities)
             item.img = data.sprites.front_default,
             item.height = data.height,
             item.types = data.types
+            item.abilities = data.abilities
        }).catch((e) =>{
             hideLoadingMessage()
             console.error(e)
@@ -176,6 +170,14 @@ let pokemonRepository = (function () {
     image.setAttribute('height', 150)
     image.setAttribute('alt', `Image of ${pokemon.name}`)
 
+    // Abilities
+    const descriptionAbilities = document.createElement('p')
+    const pokemonAbilities = pokemon.abilities.map((item) =>{
+       return item.ability.name.charAt(0).toUpperCase() + item.ability.name.slice(1)
+    }).join(', ')
+    descriptionAbilities.innerText = `Abilities: ${pokemonAbilities}`
+    descriptionAbilities.classList.add('text-warning')
+
 
     // Append
     modalHeader.appendChild(heading)
@@ -183,14 +185,16 @@ let pokemonRepository = (function () {
     modalBody.appendChild(image)
     modalBody.appendChild(descriptionHeight)
     modalBody.appendChild(descriptionType)
+    modalBody.appendChild(descriptionAbilities)
   }
+
+  
 
 
     // IIFE return values to be global values
     return {
         getAll: getAll,
         add: add,
-        findPokemonByName: findPokemonByName,
         addListItem: addListItem,
         loadList: loadList,
     };
@@ -198,10 +202,32 @@ let pokemonRepository = (function () {
 
 
 //Checking if the data was fetched
-pokemonRepository.loadList().then(() =>{
+ pokemonRepository.loadList().then(() =>{
     pokemonRepository.getAll().forEach(pokemon => {
     pokemonRepository.addListItem(pokemon);
-});
+})})
 
 
+const searchBtn = document.getElementById('searchBtn')
+const searchInput = document.getElementById('searchInput')
+const clearBtn = document.getElementById('clearBtn')
+
+searchBtn.addEventListener('click', e =>{
+    e.preventDefault();
+    let pokemonList = document.querySelector('.list-group')
+    pokemonList.innerHTML= ''
+    const searchValue = searchInput.value
+    pokemonRepository.getAll().filter((pokemon) =>{
+       if(pokemon.name.startsWith(searchValue)){
+        return pokemonRepository.addListItem(pokemon)
+       }
+    })
+})
+
+clearBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    let pokemonList = document.querySelector('.list-group')
+    pokemonList.innerHTML= ''
+    searchInput.value = ''
+    pokemonRepository.getAll().forEach((pokemon => pokemonRepository.addListItem(pokemon)))
 })
