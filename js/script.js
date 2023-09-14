@@ -52,7 +52,7 @@ let pokemonRepository = (function () {
 
         // Add class to button element
         createButtonElement.classList.add('btn')
-        createButtonElement.classList.add('btn-warning')
+        // createButtonElement.classList.add('btn-warning')
         createButtonElement.classList.add('button-pokemon')
 
         // Add attribute to button to toggle modal

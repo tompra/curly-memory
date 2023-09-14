@@ -39,7 +39,14 @@ form button{
     text-transform: capitalize;
     font-weight: 700;
     color: #CC0000;
+    background: linear-gradient(90deg, #FFDE00, #bca304);
+    transition: background 0.3s ease-in;
 }
+.button-pokemon:hover{
+    background: linear-gradient(180deg, #bca304, #FFDE00);
+    color: #FF0000;
+}
+
 .img-button{
     width: 50px;
     height: 50px;
