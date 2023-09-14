@@ -25,20 +25,27 @@ let pokemonRepository = (function () {
 
     // Getting list of pokemons in the interface
     function addListItem(pokemon) {
-        console.log(pokemon)
+        console.log(pokemon.id)
         // Select the pokemon unordered list
         let getListOfPokemon = document.querySelector('.list-group');
 
         // Create button, list element, image
         let createListElement = document.createElement('li');
         let createButtonElement = document.createElement('button');
+        let createImageElement = document.createElement('img')
 
         // Give the to the new button element the pokemon's name
         createButtonElement.innerText = `${pokemon.name}`;
 
-        // Append the new created button and list items to the parent element
+        // Set the button source attribute
+        createImageElement.setAttribute('src',`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`)
+        createImageElement.setAttribute('alt', `A small image of ${pokemon.name}`)
+        createImageElement.classList.add('img-button')
+
+        // Append the new created button, list items and the image to the parent element
         getListOfPokemon.appendChild(createListElement);
         createListElement.appendChild(createButtonElement);
+        createButtonElement.appendChild(createImageElement)
 
         // Add class to li elements
         createListElement.classList.add('list-group-item')
@@ -58,7 +65,6 @@ let pokemonRepository = (function () {
         createListElement.classList.add('col-md-4')
         createListElement.classList.add('col-6')
         
-
         // Add event listener to the buttons
         eventShowDetails(createButtonElement, pokemon);
     }
@@ -110,6 +116,7 @@ let pokemonRepository = (function () {
             return response.json()
        }).then((data) => {
             hideLoadingMessage()
+            console.log(data.sprites.front_default);
             item.img = data.sprites.front_default,
             item.height = data.height,
             item.types = data.types
@@ -165,11 +172,10 @@ let pokemonRepository = (function () {
     // Image
     const image = document.createElement('img')
     image.setAttribute('src', pokemon.img)
+    image.setAttribute('alt', `Image of ${pokemon.name}`)
     image.classList.add('img-fluid')
     image.classList.add('rounded')
-    image.setAttribute('width', 150)
-    image.setAttribute('height', 150)
-    image.setAttribute('alt', `Image of ${pokemon.name}`)
+    image.classList.add('img-card')
 
     // Abilities
     const descriptionAbilities = document.createElement('p')
