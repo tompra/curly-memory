@@ -157,18 +157,24 @@ let pokemonRepository = (function () {
     closeButton.setAttribute('data-bs-target', '#exampleModal')
     closeButton.setAttribute('aria-label', 'close')
     closeButton.classList.add('btn-close')
-    closeButton.classList.add('text-light-emphasis')
 
     // Content 
+    // Type
     const descriptionType = document.createElement('p')
-    const descriptionHeight = document.createElement('p')
+    const titleType = document.createElement('p')
     const typeNames = pokemon.types.map((item) =>{
         return item.type.name.charAt(0).toUpperCase() + item.type.name.slice(1)
     }).join(', ')
-    // descriptionType.classList.add('text-warning')
-    // descriptionHeight.classList.add('text-warning')
-    descriptionType.innerText = `Type: ${typeNames}.`
-    descriptionHeight.innerText = `Height: ${pokemon.height}.`
+    titleType.innerText = 'Type'
+    titleType.classList.add('modal__pokemon--title')
+    descriptionType.innerText = `${typeNames}`
+    
+    // Height
+    const descriptionHeight = document.createElement('p')
+    const titleHeight = document.createElement('p')
+    titleHeight.innerText = 'Height'
+    titleHeight.classList.add('modal__pokemon--title')
+    descriptionHeight.innerText = `${pokemon.height}m`
 
     // Image
     const image = document.createElement('img')
@@ -180,19 +186,23 @@ let pokemonRepository = (function () {
 
     // Abilities
     const descriptionAbilities = document.createElement('p')
+    const titleAbilities = document.createElement('p')
     const pokemonAbilities = pokemon.abilities.map((item) =>{
        return item.ability.name.charAt(0).toUpperCase() + item.ability.name.slice(1)
     }).join(', ')
-    descriptionAbilities.innerText = `Abilities: ${pokemonAbilities}`
-    // descriptionAbilities.classList.add('text-danger')
-
+    descriptionAbilities.innerText = `${pokemonAbilities}`
+    titleAbilities.innerText = 'Abilities'
+    titleAbilities.classList.add('modal__pokemon--title')
 
     // Append
     modalHeader.appendChild(heading)
     modalHeader.appendChild(closeButton)
     modalBody.appendChild(image)
+    modalBody.appendChild(titleHeight)
     modalBody.appendChild(descriptionHeight)
+    modalBody.appendChild(titleType)
     modalBody.appendChild(descriptionType)
+    modalBody.appendChild(titleAbilities)
     modalBody.appendChild(descriptionAbilities)
   }
 
