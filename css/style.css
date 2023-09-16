@@ -15,13 +15,18 @@ body {
 nav, .pokemon-list{
     width: 100%;
 }
-.navigation--container{
-    margin: 0 50px;
+
+.nav--img{
+    max-width: 50%;
 }
+
 form button{
     margin: 0 10px;
 }
-
+#navbarNav{
+    display: flex;
+    justify-content: flex-end;
+}
 .list-group{
     display:flex;
     flex-direction: row;

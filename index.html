@@ -13,21 +13,29 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid navigation--container">
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm ">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="images/pokedexx.svg" alt="Pokedex Logo" class="d-inline-block align-text-top">
+                <img src="images/pokedexx.svg" alt="Pokedex Logo"
+                    class="d-inline-block align-text-top img-fluid nav--img">
             </a>
-
-            <form class="d-flex" role="search">
-                <label for="search-input" class="visually-hidden">Search Pokemon</label>
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search Pokemon"
-                    id="searchInput" autocomplete="off" />
-                <button class="btn btn-danger" id="searchBtn">Search</button>
-                <button class="btn btn-danger" id="clearBtn">Clear</button>
-            </form>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex" role="search">
+                    <label for="search-input" class="visually-hidden">Search Pokemon</label>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search Pokemon"
+                        id="searchInput" autocomplete="off" />
+                    <button class="btn btn-danger" id="searchBtn">Search</button>
+                    <button class="btn btn-danger" id="clearBtn">Clear</button>
+                </form>
+            </div>
         </div>
     </nav>
+
+
 
     <!-- Pokemon list -->
 
