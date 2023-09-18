@@ -1,4 +1,4 @@
-# Pokedex
+# Pokédex
 
 ## Project description
 
@@ -39,6 +39,8 @@ I would try to add pagination to the main page and give more animation to the mo
 - Pokemon API: https://pokeapi.co/
 - Bootstrap
 
+## Link to website
 
+https://tompra.github.io/pokedex/
 
 
