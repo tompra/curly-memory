@@ -50,6 +50,7 @@ form button{
     color: #CC0000;
     background: linear-gradient(90deg, #FFDE00, #bca304);
     border: 3px solid #FF0000;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 .button-pokemon:hover{
     background: linear-gradient(180deg, #bca304, #FFDE00);
