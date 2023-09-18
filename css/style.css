@@ -39,22 +39,27 @@ form button{
     border: 0;
 }
 .button-pokemon{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
     padding: 15px;
     width: 100%;
     text-transform: capitalize;
     font-weight: 700;
     color: #CC0000;
     background: linear-gradient(90deg, #FFDE00, #bca304);
-    transition: background 0.3s ease-in;
+    border: 3px solid #FF0000;
 }
 .button-pokemon:hover{
     background: linear-gradient(180deg, #bca304, #FFDE00);
     color: #FF0000;
+    border: 3px solid#CC0000;
 }
 
 .img-button{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
 .img-card{
     width: 200px;
@@ -82,7 +87,8 @@ form button{
     border-bottom: 1px solid #FF0000;
     padding: 5px 0;
     background-color: #293590;
-    font-size: 18px;
+    font-size: 20px;
+    color: #ffbb00;
 }
 
 .btn-close{
