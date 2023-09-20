@@ -39,7 +39,9 @@ let pokemonRepository = (function () {
         // Set the button source attribute
         createImageElement.setAttribute('src',`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`)
         createImageElement.setAttribute('alt', `A small image of ${pokemon.name}`)
+        // createImageElement.classList.add('img-fluid')
         createImageElement.classList.add('img-button')
+
 
         // Append the new created button, list items and the image to the parent element
         getListOfPokemon.appendChild(createListElement);
@@ -157,6 +159,8 @@ let pokemonRepository = (function () {
     closeButton.setAttribute('data-bs-target', '#exampleModal')
     closeButton.setAttribute('aria-label', 'close')
     closeButton.classList.add('btn-close')
+    closeButton.classList.add('btn-close-white')
+
 
     // Content 
     // Type
@@ -223,7 +227,6 @@ let pokemonRepository = (function () {
     pokemonRepository.addListItem(pokemon);
 })})
 
-
 const searchBtn = document.getElementById('searchBtn')
 const searchInput = document.getElementById('searchInput')
 const clearBtn = document.getElementById('clearBtn')
@@ -247,3 +250,4 @@ clearBtn.addEventListener('click', (e)=>{
     searchInput.value = ''
     pokemonRepository.getAll().forEach((pokemon => pokemonRepository.addListItem(pokemon)))
 })
+
