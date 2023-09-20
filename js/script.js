@@ -37,7 +37,7 @@ let pokemonRepository = (function () {
         createButtonElement.innerText = `${pokemon.name}`;
 
         // Set the button source attribute
-        createImageElement.setAttribute('src',`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`)
+        createImageElement.setAttribute('src',`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`)
         createImageElement.setAttribute('alt', `A small image of ${pokemon.name}`)
         createImageElement.classList.add('img-button')
 
@@ -115,7 +115,7 @@ let pokemonRepository = (function () {
             return response.json()
        }).then((data) => {
             hideLoadingMessage()
-            item.img = data.sprites.front_default,
+            item.img = data.sprites.other['official-artwork'].front_default,
             item.height = data.height,
             item.types = data.types
             item.abilities = data.abilities
