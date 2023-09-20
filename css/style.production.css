@@ -18,24 +18,29 @@ nav, .pokemon-list{
 }
 
 .nav--img{
-    max-width: 50%;
-}
-
-form button{
-    margin: 0 10px;
-}
-.navbar-brand{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    max-width: 50%;
 }
-#navbarNav{
+form button{
+    margin: 0 10px;
+}
+#navBarSupportedContent{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+}
+#navContainer{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 .list-group{
     display:-webkit-box;
@@ -84,8 +89,7 @@ form button{
 }
 
 .img-button{
-    width: 60px;
-    height: 60px;
+    max-width: 5rem;
 }
 .img-card{
     width: 200px;
@@ -117,10 +121,3 @@ form button{
     font-size: 20px;
     color: #ffbb00;
 }
-
-/* .btn-close{
-    background-image: url(./images/iconmonstr-x-mark-circle-thin.svg); 
-    background-size: contain;
-    border-radius: 16px;
-    background-color: whitesmoke;
-} */

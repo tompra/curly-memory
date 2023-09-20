@@ -220,16 +220,15 @@ let pokemonRepository = (function () {
     };
 })();
 
+const searchBtn = document.getElementById('searchBtn')
+const searchInput = document.getElementById('searchInput')
+const clearBtn = document.getElementById('clearBtn')
 
-//Checking if the data was fetched
  pokemonRepository.loadList().then(() =>{
     pokemonRepository.getAll().forEach(pokemon => {
     pokemonRepository.addListItem(pokemon);
 })})
 
-const searchBtn = document.getElementById('searchBtn')
-const searchInput = document.getElementById('searchInput')
-const clearBtn = document.getElementById('clearBtn')
 
 searchBtn.addEventListener('click', e =>{
     e.preventDefault();
